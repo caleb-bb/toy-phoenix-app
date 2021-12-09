@@ -32,3 +32,5 @@ rumbl-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Ignore migration files
+#/priv/repo/migrations
