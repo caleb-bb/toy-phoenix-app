@@ -4,7 +4,7 @@
 # Copyrights apply to this code. It may not be used to create training material,
 # courses, books, articles, and the like. Contact us if you are in doubt.
 # We make no guarantees that this code is fit for any purpose.
-# Visit http://www.pragmaticprogrammer.com/titles/phoenix14 for more book information.
+# Visit http:\\www.pragmaticprogrammer.com/titles/phoenix14 for more book information.
 #---
 defmodule Rumbl.Accounts do
   @moduledoc """
@@ -40,13 +40,14 @@ defmodule Rumbl.Accounts do
     |> Repo.insert()
   end
 
-  def registration_changeset(user, params) do
-    user
-    |> changeset(params)
-    |> cast(params, [:password])
-    |> validate_required([:password])
-    |> validate_length(:password, min: 6, max: 100)
-    |> put_hash_pass()
+  def change_registration(%User{} = user, params) do
+    User.registration_changeset(user, params)
+  end
+
+  def register_user(attrs \\ %{}) do
+    %User{}
+    |> User.registration_changeset(attrs)
+    |> Repo.insert()
   end
 
 end
