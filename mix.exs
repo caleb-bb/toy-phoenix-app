@@ -15,7 +15,7 @@ defmodule Rumbl.MixProject do
   end
 
   # Configuration for the OTP application.
-  #
+  # These are dependencies that ship with Erlang || Elixir
   # Type `mix help compile.app` for more information.
   def application do
     [
@@ -48,7 +48,8 @@ defmodule Rumbl.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:pbkdf2_elixir, "~> 1.0"}
     ]
   end
 
