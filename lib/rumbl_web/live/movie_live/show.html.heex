@@ -1,0 +1,41 @@
+<h1>Show Movie</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.movie_show_path(@socket, :show, @movie)}>
+    <.live_component
+      module={RumblWeb.MovieLive.FormComponent}
+      id={@movie.id}
+      title={@page_title}
+      action={@live_action}
+      movie={@movie}
+      return_to={Routes.movie_show_path(@socket, :show, @movie)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @movie.title %>
+  </li>
+
+  <li>
+    <strong>Release date:</strong>
+    <%= @movie.release_date %>
+  </li>
+
+  <li>
+    <strong>Blurb:</strong>
+    <%= @movie.blurb %>
+  </li>
+
+  <li>
+    <strong>Rating:</strong>
+    <%= @movie.rating %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.movie_show_path(@socket, :edit, @movie), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.movie_index_path(@socket, :index) %></span>

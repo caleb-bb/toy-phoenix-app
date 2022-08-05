@@ -1,0 +1,32 @@
+<div>
+  <h2><%= @title %></h2>
+
+  <.form
+    let={f}
+    for={@changeset}
+    id="movie-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save">
+  
+    <%= label f, :title %>
+    <%= text_input f, :title %>
+    <%= error_tag f, :title %>
+  
+    <%= label f, :release_date %>
+    <%= date_select f, :release_date %>
+    <%= error_tag f, :release_date %>
+  
+    <%= label f, :blurb %>
+    <%= text_input f, :blurb %>
+    <%= error_tag f, :blurb %>
+  
+    <%= label f, :rating %>
+    <%= number_input f, :rating %>
+    <%= error_tag f, :rating %>
+  
+    <div>
+      <%= submit "Save", phx_disable_with: "Saving..." %>
+    </div>
+  </.form>
+</div>
